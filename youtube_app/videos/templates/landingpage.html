@@ -1,0 +1,15 @@
+<!-- landing_page.html in your templates (videos/templates/videos/landing_page.html) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+<body>
+    <h1>Welcome to our YouTube App!</h1>
+    <p>This is a public landing page that doesn't require login.</p>
+    <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></p>
+</body>
+</html>
