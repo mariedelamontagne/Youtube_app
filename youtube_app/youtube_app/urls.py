@@ -4,5 +4,5 @@ from . import views  # Import your views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('youtube_app.urls')),
+    path('', include('videos.urls')),
 ]
