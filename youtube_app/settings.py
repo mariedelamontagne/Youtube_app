@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Your app
-    'youtube_app',  # Ensure this line is present
+    'youtube_app', 
+    'videos.apps.VideosConfig',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
