@@ -5,22 +5,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import YouTubeVideo, Comment
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 def login_view(request):
     return render(request, 'videos/video_list.html')
 
-def register_view(request):
-    if request.method == "POST":
-        form = UserCreationForm(request, data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request, user)
-            # Redirect to home or another page after login
-            return redirect('home')  # Or any other view name
-    else:
-        form = UserCreationForm()
-
-    return render(request, 'videos/login.html', {'form': form})
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"
 
 def home_view(request):
     return render(request, 'videos/home.html')
@@ -34,3 +29,11 @@ class VideoListView (ListView):
     template_name = 'videos/video_list.html'  
     context_object_name = 'videos'
     
+def add_video(request):
+    pass
+
+def add_comment(request):
+    pass
+
+def video_detail(request):
+    pass

@@ -5,6 +5,10 @@
     <title>YouTube Videos</title>
 </head>
 <body>
+    <form action="{% url 'landingpage' %}" method="post">
+        {% csrf_token %}
+        <button type="Back">Back</button>
+      </form>
     <h1>YouTube Videos</h1>
 
     {% if videos %}
@@ -12,6 +16,10 @@
             {% for video in videos %}
                 <li>
                     <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
+                    <p>{{ video.description }}</p>
+                    {% if video.pub_date %}
+                        <small>Published on: {{ video.pub_date }}</small>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
