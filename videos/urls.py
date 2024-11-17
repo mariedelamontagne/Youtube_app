@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 from . import views
-from django.urls import path
 from .views import SignUpView
 
 urlpatterns = [
