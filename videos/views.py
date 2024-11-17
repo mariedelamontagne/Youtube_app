@@ -15,4 +15,5 @@ def home_view(request):
     return render(request, 'videos/home.html')
 
 def video_list(request):
+    videos = YouTubeVideo.objects.all()
     return render(request, 'videos/video_list.html')

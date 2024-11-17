@@ -9,9 +9,14 @@
     <ul>
         {% for video in videos %}
             <li>
-                <a href="#">{{ video.title }}</a>
+                <!-- Zobrazení názvu videa -->
+                <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
+
+                <!-- Odkaz na přidání komentáře k videu (budeš mít připravenou view pro tento odkaz) -->
                 <a href="{% url 'post_comment' video.id %}">Post Comment</a>
             </li>
+        {% empty %}
+            <li>No videos found.</li>
         {% endfor %}
     </ul>
 </body>
