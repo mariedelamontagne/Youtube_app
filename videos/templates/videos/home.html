@@ -8,7 +8,10 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/videos/video_list">All Videos</a></li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Log Out</button>
+                  </form>
             </ul>
         </nav>
     </header>
@@ -16,7 +19,7 @@
     <main>
         <h1>Welcome to Marie's YouTube page!</h1>
         <p>This is a page about all kinds if videos. I really hope you enjoy it.</p>
-        <p>This is a public landing page that doesn't require login. To see All Videos, login or register:</p>
+        <p>To see All Videos, login or register:</p>
     <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'register' %}">Register</a></p>
     </main>
 
@@ -26,3 +29,4 @@
     </footer>
 </body>
 </html>
+

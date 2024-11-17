@@ -14,6 +14,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'APP_DIRS': True,  # This makes Django look for templates inside app directories
+       # "DIRS": [BASE_DIR / "templates"],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "accounts",
 
     # Your app
     'youtube_app', 
@@ -77,3 +79,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',  # Path to the SQLite database file
     }
 }
+
+LOGIN_REDIRECT_URL = '/videos/video_list/'
+LOGOUT_REDIRECT_URL = '/videos/landingpage/'

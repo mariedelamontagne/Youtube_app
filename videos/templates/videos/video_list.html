@@ -12,10 +12,13 @@
             {% for video in videos %}
                 <li>
                     <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
-                    <a href="{% url 'post_comment' video.id %}">Post Comment</a>
                 </li>
             {% endfor %}
         </ul>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+          </form>
     {% else %}
         <p>No videos found.</p>
     {% endif %}
