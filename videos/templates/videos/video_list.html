@@ -6,18 +6,18 @@
 </head>
 <body>
     <h1>YouTube Videos</h1>
-    <ul>
-        {% for video in videos %}
-            <li>
-                <!-- Zobrazení názvu videa -->
-                <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
 
-                <!-- Odkaz na přidání komentáře k videu (budeš mít připravenou view pro tento odkaz) -->
-                <a href="{% url 'post_comment' video.id %}">Post Comment</a>
-            </li>
-        {% empty %}
-            <li>No videos found.</li>
-        {% endfor %}
-    </ul>
+    {% if videos %}
+        <ul>
+            {% for video in videos %}
+                <li>
+                    <a href="{{ video.url }}" target="_blank">{{ video.title }}</a>
+                    <a href="{% url 'post_comment' video.id %}">Post Comment</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No videos found.</p>
+    {% endif %}
 </body>
 </html>
