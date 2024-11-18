@@ -10,12 +10,15 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 
 def login_view(request):
-    return render(request, 'videos/video_list.html')
+    return render(request, 'videos/login.html')
 
 class SignUpView(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
-    template_name = "registration/signup.html"
+    template_name = "videos/signup.html"
+
+def signup_view(request):
+    return render(request, 'videos/signup.html')
 
 def home_view(request):
     return render(request, 'videos/home.html')
