@@ -1,7 +1,11 @@
-<!-- templates/registration/signup.html -->
-{% extends "videos.html" %}
+<!-- templates/videos/signup.html -->
 
-{% block title %}Sign Up{% endblock %}
+
+<form action="{% url 'landingpage' %}" method="post">
+  {% csrf_token %}
+  <button type="Back">Back</button>
+</form>
+<h1>YouTube Videos</h1>
 
 {% block content %}
 <h2>Sign up</h2>

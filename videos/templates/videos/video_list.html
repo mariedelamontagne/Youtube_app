@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>YouTube Videos</title>
+    <title>Go Back</title>
 </head>
 <body>
     <form action="{% url 'landingpage' %}" method="post">
         {% csrf_token %}
         <button type="Back">Back</button>
       </form>
-    <h1>YouTube Videos</h1>
+    <h1>Add New Video</h1>
+    <form action="{% url 'add_video' %}" method="post">
+        {% csrf_token %}
+        <button type="Add video">Add video</button>
+      </form>
+    <h1>Discover all these great YouTube Videos</h1>
 
     {% if videos %}
         <ul>
@@ -23,6 +28,10 @@
                 </li>
             {% endfor %}
         </ul>
+        <li>
+            <a href="{% url 'video_detail' video.pk %}">{{ video.title }}</a>
+            - {{ video.description }}
+        </li>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Log Out</button>
