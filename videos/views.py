@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import YouTubeVideo
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.contrib.auth.forms import UserCreationForm
