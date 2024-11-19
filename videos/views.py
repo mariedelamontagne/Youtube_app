@@ -83,6 +83,6 @@ def add_video(request):
 
     return render(request, 'add_video.html', {'form': form})
 
-#def video_list(request):
-#    videos = Video.objects.all()
-#    return render(request, 'video_list.html', {'videos': videos})
+def table_view(request):
+    videos = YouTubeVideo.objects.all()  # Fetch all YouTube videos
+    return render(request, 'table_view.html', {'videos': videos})

@@ -5,16 +5,21 @@
     <title>Go Back</title>
 </head>
 <body>
-    <form action="{% url 'landingpage' %}" method="post">
-        {% csrf_token %}
-        <button type="Back">Back</button>
-      </form>
+    <ul>
+        <form action="{% url 'landingpage' %}" method="post">
+            {% csrf_token %}
+            <button type="Back">Back</button>
+          </form>
+    </ul>
+   
     <h1>Add New Video</h1>
     <form action="{% url 'add_video' %}" method="post">
         {% csrf_token %}
         <button type="Add video">Add video</button>
       </form>
-    <h1>Discover all these great YouTube Videos</h1>
+    
+    <h1>Welcome, {{ request.user.username }}!</h1>
+    <h2>Discover all these great YouTube Videos</h2>
 
     {% if videos %}
         <ul>
@@ -25,9 +30,12 @@
                     {% if video.pub_date %}
                         <small>Published on: {{ video.pub_date }}</small>
                     {% endif %}
-                    <br>
+                    
+                </nav>       
+                        <br>
                     <a href="{% url 'video_detail' pk=video.pk %}">View Details</a>
                     <br>
+                </nav>    
                 </li>
             {% endfor %}
 

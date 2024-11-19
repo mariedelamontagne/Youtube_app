@@ -13,12 +13,31 @@
                     <button type="submit">Log Out</button>
                   </form>
             </ul>
+            <ul>
+                <form action="{% url 'table_view' %}" method="post">
+                    {% csrf_token %}
+                    <button type="List of videos">Video Table</button>
+                  </form>
+            </ul>
+            <ul>
+                <form action="{% url 'video_list' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">All Videos</button>
+                  </form>
+            </ul>
         </nav>
     </header>
 
     <main>
         <h1>Welcome to Marie's YouTube page!</h1>
-        <p>This is a page about all kinds if videos. I really hope you enjoy it.</p>
+
+        <h2>A little bit about me:</h2>
+
+        <p>My name is Marie. I work in tech by day and in music by night. I used to live in France and it is still my favorite place. I like to travel and I like to learn new things. So that is why I just learned how to create an app in Python using Django.</p>
+
+        <h2>A little bit about the page:</h2>
+
+        <p>This is a page about all kinds if videos. I need to make such a web for my company, so this is why I decided for this project. I really hope you enjoy it.</p>
        
         <header>
             <nav>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video List</h1>
+
+    <form action="{% url 'landingpage' %}" method="post">
+        {% csrf_token %}
+        <button type="Back">Back</button>
+    </form>
+
+    <h1>Add New Video</h1>
+    <form action="{% url 'add_video' %}" method="post">
+        {% csrf_token %}
+        <button type="Add video">Add video</button>
+    </form>
+
+    <h2>Discover all these great YouTube Videos</h2>
+
+    {% if videos %}
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Published Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+            <tr>
+                <td>{{ video.title }}</td>
+                <td>{{ video.description }}</td>
+                <td>{{ video.pub_date }}</td>
+                <td>
+                    <a href="{{ video.url }}" target="_blank">View on YouTube</a> |
+                    <a href="{% url 'video_detail' pk=video.pk %}">View Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No videos found.</p>
+    {% endif %}
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>

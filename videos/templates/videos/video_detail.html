@@ -1,3 +1,8 @@
+<form action="{% url 'video_list' %}" method="post">
+    {% csrf_token %}
+    <button type="Back">Back</button>
+  </form>
+
 <h1>{{ video.title }}</h1>
 <p>{{ video.description }}</p>
 <a href="{{ video.url }}" target="_blank">Watch on YouTube</a>
