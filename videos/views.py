@@ -36,6 +36,7 @@ def signup_view(request):
 def home_view(request):
     return render(request, 'videos/home.html')
 
+@login_required
 def video_list(request):
     videos = YouTubeVideo.objects.all()
     return render(request, 'videos/video_list.html', {"videos" : videos})
@@ -63,10 +64,11 @@ def video_detail(request, pk):
         'form': form,
     })
 
+@login_required
 def add_comment(request):
     pass
 
-    
+@login_required  
 def add_video(request):
     if request.method == 'POST':
         form = VideoForm(request.POST)

@@ -80,5 +80,6 @@ DATABASES = {
     }
 }
 
+LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/videos/video_list/'
 LOGOUT_REDIRECT_URL = '/videos/landingpage/'
