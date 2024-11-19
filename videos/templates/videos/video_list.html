@@ -25,6 +25,9 @@
                     {% if video.pub_date %}
                         <small>Published on: {{ video.pub_date }}</small>
                     {% endif %}
+                    <br>
+                    <a href="{% url 'video_detail' pk=video.pk %}">View Details</a>
+                    <br>
                 </li>
             {% endfor %}
 

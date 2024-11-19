@@ -46,20 +46,22 @@ class VideoListView (ListView):
     context_object_name = 'videos'
     
 def video_detail(request, pk):
-    video = get_object_or_404(Video, pk=pk)
-    comments = video.comments.all()
+    video = get_object_or_404(YouTubeVideo, pk=pk)
+    comments = video.comments.all()  # Retrieve all comments for the video
+    form = CommentForm(request.POST or None)  # Handle GET and POST requests for the comment form
 
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.video = video
-            comment.save()
-            return redirect('video_detail', pk=video.pk)  # Redirect to avoid resubmission
-    else:
-        form = CommentForm()
+    if form.is_valid():
+        new_comment = form.save(commit=False)
+        new_comment.video = video  # Associate the comment with the video
+        new_comment.save()  # Save the comment
 
-    return render(request, 'video_detail.html', {'video': video, 'comments': comments, 'form': form})
+        return redirect('video_detail', pk=video.pk)  # Redirect to the same page
+
+    return render(request, 'videos/video_detail.html', {
+        'video': video,
+        'comments': comments,
+        'form': form,
+    })
 
 def add_comment(request):
     pass

@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ video.title }}</title>
-</head>
-<body>
-    <h1>{{ video.title }}</h1>
-    <iframe width="560" height="315" src="{{ video.url|safe }}" frameborder="0" allowfullscreen></iframe>
-    <p>{{ video.description }}</p>
+<h1>{{ video.title }}</h1>
+<p>{{ video.description }}</p>
+<a href="{{ video.url }}" target="_blank">Watch on YouTube</a>
 
-    <h2>Comments</h2>
-    {% for comment in comments %}
-        <p><strong>{{ comment.author }}</strong>: {{ comment.content }}</p>
-    {% empty %}
-        <p>No comments yet. Be the first to comment!</p>
-    {% endfor %}
+<hr>
 
-    <h3>Add a Comment</h3>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Comment</button>
-    </form>
-</body>
-</html>
+<h2>Comments</h2>
+
+{% for comment in comments %}
+    <div class="comment">
+        <strong>{{ comment.author }}:</strong>
+        <p>{{ comment.content }}</p>
+    </div>
+{% empty %}
+    <p>No comments yet. Be the first to comment!</p>
+{% endfor %}
+
+<h3>Add a Comment</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Post Comment</button>
+</form>
