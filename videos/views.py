@@ -10,11 +10,9 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
-from .models import Video
+from .models import YouTubeVideo, Comment
 from .forms import VideoForm
-from django.db import models
-#from .forms import CommentForm
-
+from .forms import CommentForm
 
 class MyLoginView(LoginView):
     template_name = 'login.html'  # Your login template
@@ -24,7 +22,7 @@ def login_view(request):
     return render(request, 'videos/login.html')
 
 def get_success_url(self):
-        return self.get_redirect_url() or '/videos/video_list/'   
+        return reverse_lazy('video_list')  
  
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -63,9 +61,6 @@ def video_detail(request, pk):
     return render(request, 'video_detail.html', {'video': video, 'comments': comments, 'form': form})
 
 def add_comment(request):
-    pass
-
-def video_detail(request):
     pass
 
     

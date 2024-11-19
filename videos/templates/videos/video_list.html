@@ -27,11 +27,8 @@
                     {% endif %}
                 </li>
             {% endfor %}
+
         </ul>
-        <li>
-            <a href="{% url 'video_detail' video.pk %}">{{ video.title }}</a>
-            - {{ video.description }}
-        </li>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit">Log Out</button>

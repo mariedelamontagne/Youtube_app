@@ -19,7 +19,18 @@
     <main>
         <h1>Welcome to Marie's YouTube page!</h1>
         <p>This is a page about all kinds if videos. I really hope you enjoy it.</p>
-        <p>To see All Videos, login or register:</p>
+       
+        <header>
+            <nav>
+                <ul>
+                    <form action="{% url 'video_list' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">All Videos</button>
+                      </form>
+                </ul>
+            </nav>
+        </header>
+         <p>To see All Videos, login or register:</p>
     <p><a href="{% url 'login' %}">Login</a> or <a href="{% url 'signup' %}">Register</a></p>
     </main>
 
